@@ -17,7 +17,7 @@ class MyHomePage extends StatelessWidget {
         ),
         body: const Center(
           child: Image(
-              image: NetworkImage('https://i.redd.it/w1d4pl4mdp971.png')
+              image: AssetImage('assets/baby-irys.jpg')
           ),
         ),
         floatingActionButton: FloatingActionButton(
