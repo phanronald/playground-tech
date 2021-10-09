@@ -2,8 +2,16 @@ import 'package:flutter/material.dart';
 
 void main() => runApp(const MyHomePage());
 
-class MyHomePage extends StatelessWidget {
+class MyHomePage extends StatefulWidget {
   const MyHomePage({Key? key}) : super(key: key);
+
+  @override
+  State<MyHomePage> createState() => _MyHomePageState();
+}
+
+class _MyHomePageState extends State<MyHomePage> {
+
+  int irysLevel = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -50,9 +58,9 @@ class MyHomePage extends StatelessWidget {
                   )
               ),
               const SizedBox(height: 30.0),// add invisible div for height instead of padding
-              const Text(
-                  'will battle against',
-                  style: TextStyle(
+              Text(
+                  '$irysLevel',
+                  style: const TextStyle(
                     color: Colors.grey,
                     letterSpacing: 2.0,
                     fontSize: 28.0,
@@ -91,14 +99,14 @@ class MyHomePage extends StatelessWidget {
           ),
         ),
         floatingActionButton: FloatingActionButton(
-          onPressed: () {
-
-          },
-            backgroundColor: Colors.red[600],
-          tooltip: 'Init Testing',
-          child: const Icon(Icons.favorite)
+            onPressed: () {
+                setState(() {
+                    irysLevel += 1;
+                });
+            },
+            backgroundColor: Colors.grey[800],
+            child: const Icon(Icons.add)
         ),
-        floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       ),
     );
   }
