@@ -11,25 +11,41 @@ class MyHomePage extends StatelessWidget {
       title: 'Welcome to Flutter Test',
       home: Scaffold(
         appBar: AppBar(
-          title: const Text('Welcome to Flutter Test'),
+          title: const Text('Welcome to Irys Tests'),
           centerTitle: true,
           backgroundColor: Colors.red[600],
         ),
-        body: Center(
-          child: ListView(
-            children: [
-              Column(
-                  children: [
-                    Container(
-                      child: Image.asset('assets/baby-irys.jpg'),
-                    ),
-                    Container(
-                      child: Image.asset('assets/baby-irys-pokemon.jpg'),
-                    )
-                  ]
-              )
-            ],
-          )
+        body: Row(
+          children: [
+            Expanded(
+              flex: 3,
+              child: Image.asset('assets/baby-irys-pokemon.jpg'),
+            ),
+            Expanded(
+              flex: 1,
+              child: Container(
+                padding: const EdgeInsets.all(30.0),
+                color: Colors.cyan,
+                child: const Text('1')
+              ),
+            ),
+            Expanded(
+              flex: 1,
+              child: Container(
+                  padding: const EdgeInsets.all(30.0),
+                  color: Colors.pinkAccent,
+                  child: const Text('2')
+              ),
+            ),
+            Expanded(
+              flex: 1,
+              child: Container(
+                  padding: const EdgeInsets.all(30.0),
+                  color: Colors.amber,
+                  child: const Text('3')
+              ),
+            ),
+          ]
         ),
         floatingActionButton: FloatingActionButton(
           onPressed: () {
