@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'hololive.dart';
+import 'hololive_card.dart';
 
 void main() => runApp(const MyHomePage());
 
@@ -14,7 +15,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
  List<Hololive> hololivemem = [
    Hololive('Irys', 'Half angel half demon'),
-   Hololive('Calli', 'reaper')
+   Hololive('Calli Mori', 'rapping reaper')
  ];
 
   @override
@@ -35,7 +36,14 @@ class _MyHomePageState extends State<MyHomePage> {
                 padding: const EdgeInsets.all(8),
                 itemCount: hololivemem.length,
                 itemBuilder: (BuildContext context, int index) {
-                  return hololiveCard(hololivemem[index]);
+                  return HololiveCard(
+                      hololivemem[index],
+                      () {
+                        setState(() {
+                          hololivemem.remove(hololivemem[index]);
+                        });
+                      }
+                  );
                 }
             ),
         ),
@@ -48,35 +56,4 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
     );
   }
-
- Widget hololiveCard(Hololive hololive) {
-   return Card(
-     margin: const EdgeInsets.fromLTRB(16.0, 16.0, 16.0, 0.0),
-     child: Padding(
-       padding: const EdgeInsets.all(12.0),
-       child: Column(
-           crossAxisAlignment: CrossAxisAlignment.stretch,
-           children: [
-             Text(
-                 hololive.name,
-                 style: TextStyle(
-                   fontSize: 18.0,
-                   color: Colors.grey[600],
-                 )
-             ),
-             const SizedBox(height: 6.0),
-             Text(
-                 hololive.description,
-                 style: TextStyle(
-                   fontSize: 14.0,
-                   color: Colors.grey[800],
-                 )
-             ),
-           ]
-       ),
-     ),
-   );
- }
-
 }
-
