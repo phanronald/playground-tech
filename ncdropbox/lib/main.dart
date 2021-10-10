@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'hololive.dart';
 
 void main() => runApp(const MyHomePage());
 
@@ -11,98 +12,39 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
 
-  int irysLevel = 0;
+ List<Hololive> hololivemem = [
+   Hololive('Irys', 'Half angel half demon'),
+   Hololive('Calli', 'reaper')
+ ];
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Welcome to Flutter Test',
       home: Scaffold(
-        backgroundColor: Colors.grey[900],
+        backgroundColor: Colors.grey[200],
         appBar: AppBar(
           title: const Text('Welcome to Irys Tests'),
           centerTitle: true,
-          backgroundColor: Colors.grey[850],
+          backgroundColor: Colors.redAccent,
           elevation: 0.0,
         ),
         body: Padding(
           padding: const EdgeInsets.fromLTRB(30.0, 40.0, 30.0, 0.0),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              const Center(
-                child: CircleAvatar(
-                  backgroundImage: AssetImage('assets/baby-irys.jpg'),
-                  radius: 40.0,
-                ),
-              ),
-              Divider(
-                height: 60.0,
-                color: Colors.grey[800],
-              ),
-              const Text(
-                'NAME',
-                style: TextStyle(
-                  color: Colors.grey,
-                  letterSpacing: 2.0,
-                )
-              ),
-              const SizedBox(height: 10.0),// add invisible div for height instead of padding
-              Text(
-                  'Irys',
-                  style: TextStyle(
-                    color: Colors.amberAccent[200],
-                    letterSpacing: 2.0,
-                    fontSize: 28.0,
-                    fontWeight: FontWeight.bold,
-                  )
-              ),
-              const SizedBox(height: 30.0),// add invisible div for height instead of padding
-              Text(
-                  '$irysLevel',
-                  style: const TextStyle(
-                    color: Colors.grey,
-                    letterSpacing: 2.0,
-                    fontSize: 28.0,
-                    fontWeight: FontWeight.bold,
-                  )
-              ),
-              const SizedBox(height: 10.0),
-              const Text(
-                  'Calli',
-                  style: TextStyle(
-                    color: Colors.grey,
-                    letterSpacing: 2.0,
-                    fontSize: 28.0,
-                    fontWeight: FontWeight.bold,
-                  )
-              ),
-              const SizedBox(height: 30.0),
-              Row(
-                children: [
-                  Icon(
-                    Icons.email,
-                    color: Colors.grey[400]
-                  ),
-                  const SizedBox(width: 10.0),
-                  Text(
-                    'irys@calli.net',
-                    style: TextStyle(
-                      color: Colors.grey[400],
-                      fontSize: 18.0,
-                      letterSpacing: 1.0,
-                    ),
-                  ),
-                ],
-              ),
-            ],
-          ),
+            child: ListView.builder(
+                padding: const EdgeInsets.all(8),
+                itemCount: hololivemem.length,
+                itemBuilder: (BuildContext context, int index) {
+                  return Container(
+                    height: 50,
+                    color: Colors.amberAccent,
+                    child: Center(child: Text('Entry ${hololivemem[index].name}')),
+                  );
+                }
+            ),
         ),
         floatingActionButton: FloatingActionButton(
             onPressed: () {
-                setState(() {
-                    irysLevel += 1;
-                });
             },
             backgroundColor: Colors.grey[800],
             child: const Icon(Icons.add)
