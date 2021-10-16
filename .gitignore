@@ -242,3 +242,5 @@ ModelManifest.xml
 .fake/
 
 .next/
+/pdf-2-img/Pdf2Image/Pdf2Image/ocr/w2 dist
+/pdf-2-img/Pdf2Image/Pdf2Image/ocr/w2 original
