@@ -16,7 +16,9 @@ class RouteManager {
         break;
       }
       case homePage: {
-        return MaterialPageRoute(builder: (context) => const Home());
+        final args = settings.arguments as Map<String, String>;
+        String a = args["title"] ?? "";
+        return MaterialPageRoute(builder: (context) => Home(title: a));
         break;
       }
       case locationPage: {

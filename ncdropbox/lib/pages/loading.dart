@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
+import 'package:ncdropbox/routes/routes.dart';
 import 'package:ncdropbox/services/world_time.dart';
 
 class Loading extends StatefulWidget {
@@ -34,7 +35,22 @@ class _LoadingState extends State<Loading> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Text(time)
+      body: SafeArea(
+          child: Column(
+            children: [
+              Text(time),
+              ElevatedButton(
+                  onPressed: () {
+                    Navigator.of(context).pushNamed(
+                        RouteManager.homePage,
+                        arguments: { 'title': 'YESSIR'}
+                    );
+                  },
+                  child: const Text('Go to Choose HOme')
+              )
+            ],
+          )
+      )
     );
   }
 }
