@@ -96,6 +96,7 @@ class _HomeState extends State<Home> {
                       },
                     ),
                   ),
+                  obscureText: _secureText,
                 ),
               ),
               ElevatedButton(
